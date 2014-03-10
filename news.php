@@ -11,8 +11,9 @@
 	{ 
 		$id = 1; 
 	}	 
-	$sq = "SELECT id,title,author,data,short_text,text from post WHERE id=".$id;  
-	$STH = $DBH->query($sq); 
+	$sq = "SELECT id,title,author,data,short_text,text,author_id from post WHERE id=".$id;  
+	$STH = $DBH->query($sq);
+	$STH->setFetchMode(PDO::FETCH_ASSOC); 
 	if (isset($_POST['exit'])) 
 	{ 
 		$_SESSION['ent'] = 3; 
@@ -25,30 +26,31 @@
 	{ 
 		Header("Location: reg.html");  
 	} 
-	$STH->setFetchMode(PDO::FETCH_ASSOC); 
 	if( empty($STH)) 
 	{ 
 		echo "POST EMPTY<P> <a href='index.php'>HOME</a>"; 
 	} else 
 	{ 
 		echo '<html>	 
-		<head></head> 
+		<head><link rel="stylesheet" type="text/css" href="style.css"></head></head> 
 		<body> 
-		<div style="width:100%; height:100;  border: 4px solid black;"> 
-		<a href="index.php">HOME<a> 
-		</div><p> 
-		<div style="width:200; height:500; float: left;  border: 4px solid black;"> 
+		<div class="head"> 
+		<a href="index.php">HOME<a> ';
+		include('language.php');
+			echo'</div><p> 
+		<div class="leftside"> 
 		</div> 
-		<div style="width:400; height:500; float:left; border: 4px  solid black;">';   
+		<div class="center">';   
 		while($row = $STH->fetch()) 
 		{ 
-			echo '<div style="width:100%;  float:left; border: 4px  solid black;">'; 
-			echo "<b>".$row['title']."<b><p>"; 
-			echo '<div style="width:100%;  float:left; border: 4px  solid black;">';  
+			echo '<div class="post">'; 
+			echo "<b>".$row['title']."</b><p>"; 
+			echo '<div class="post">';  
 			echo $row['text']; 
 			echo "</div>"; 
-			echo '<div style="width:100%;  float:left; border: 4px  solid black;">';  
-			echo"  <p><p>avtor:".$row['author']."data: ".$row['data']."<p></div>";  
+			echo '<div class="post">';
+			$link_profil="profil.php?id=".$row['author_id'];
+		echo"<p>author:<a href=".$link_profil.">".$row['author']."</a>data: ".$row['data']."<p></div>";
 			$s = "change.php?id=".$id; 
 			if ($_SESSION['ent'] == 2 && $_SESSION['login'] == $row['author']) 
 			{ 
@@ -57,7 +59,7 @@
                  echo"<p><a href=".$s.">DELETE<a>"; 
 			} 
 		}  
-		echo ' </div></div> <div style="  width:350;   float:right;  border: 4px solid black;">'; 
+		echo ' </div></div> <div class="rightside">'; 
 	} 
 	if ($_SESSION['ent'] == 3) 
 		{ 

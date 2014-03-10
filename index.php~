@@ -1,5 +1,5 @@
-<?php
-
+<?phpecho $_SERVER['PHP_SELF'];
+exit;
 	session_start();
 	include("connect_db.php");
 	if (isset($_POST['exit']))
@@ -22,9 +22,8 @@
 	echo '<html>	
 	<head><link rel="stylesheet" type="text/css" href="style.css"></head>	
 	<body>	
-	<div class="head">';
-	include("language.php");
-		echo'</div>	
+	<div class="head">	
+	</div>	
 	<p>	
 	<div class="leftside">	
 	gfdfghjkl,kjhgf	
@@ -48,7 +47,7 @@
 	}	
 	$max = $page*10;	
 	$min = $page*10 - 10;	
-	$strSQL = "SELECT id,title,author,data,short_text,text,author_id from post LIMIT ".$min.", 10";		
+	$strSQL = "SELECT id,title,author,data,short_text,text from post LIMIT ".$min.", 10";		
 	$STH = $DBH->query($strSQL);  			
 	while($row = $STH->fetch()) 	
 	{  	
@@ -58,9 +57,9 @@
 		echo $row['short_text'];	
 		$s = "news.php?id=".$row['id'];	
 		echo"<a href=".$s.">Read more</a>";	
-		echo '</div><div class="post">';
-		$link_profil="profil.php?id=".$row['author_id'];
-		echo"<p>author:<a href=".$link_profil.">".$row['author']."</a>data: ".$row['data']."<p></div>"; 
+		echo '</div><div class="post">';	
+		echo "<p>avtor:".$row['author']."data: ".$row['data'];	
+		echo '</div>';	
 	}
 	
 	$previous_page = $page-1;
@@ -90,9 +89,7 @@
 		include( "login.html");	
 	}	
 	else 	
-	{
-		$link_profil="profil.php?id=".$_SESSION['profil_id'];
-		echo "<a href=".$link_profil.">Profils</a>";
+	{	
 		echo '<FORM ACTION="" METHOD="POST">	
 		<input type="submit" name="create_news" value="Create News">	
 		<input type="submit" name="exit" value="Exit">  </FORM>';	

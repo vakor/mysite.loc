@@ -6,8 +6,8 @@
     $text = $_POST['text'];
     $author = $_SESSION['login'];
     include("connect_db.php");
-    $data = array($title	,$author	,date("l dS of F Y ")	, substr($text, 0, 150)	,$text	);
-    $STH = $DBH->prepare("INSERT INTO post (title	,author	,data	,short_text	,text	) values (?,?,?,?,?)");  
+    $data = array($title	,$author	,date("l dS of F Y ")	, substr($text, 0, 150)	,$text,$_SESSION['profil_id']	);
+    $STH = $DBH->prepare("INSERT INTO post (title	,author	,data	,short_text	,text,author_id) values (?,?,?,?,?,?)");  
     $STH->execute($data);
 		$s = "news.php?id=".$DBH->lastInsertId();
     Header("Location: ".$s); 

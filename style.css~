@@ -1,0 +1,32 @@
+.head { /*  */  
+	border: 4px solid black;
+	height:100;
+	width:100%; 
+}
+.leftside {
+	border: 4px solid black;
+	float: left;
+	height:500;
+	width:200;
+}
+.center { 
+	border: 4px  solid black;
+	float:left;
+	height:500; 
+	width:400; 
+}
+.post {
+	border: 1px  solid black;
+	float:left;
+	width:95%;  	
+}
+.rightside {
+	border: 4px solid black;
+	float:right;
+	width:350;   	
+}
+.row{
+	border: 2px  solid black;
+	float:left;
+	width:90%;  
+}
