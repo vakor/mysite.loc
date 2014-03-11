@@ -1,7 +1,8 @@
 <?php 
 	session_start();
 	include("connect_db.php");
-	
+	include("translate.php");
+	include("set_lang.php");
 	
 	if( empty($_GET['id'])){
 		$id=1;
@@ -26,23 +27,23 @@
 	$row = $STH->fetch();
 	if(!empty($row)){
 		$login=$row['login'];
-		echo "<p><img src=img/".$row['photo']." >";
-		echo "<p>Login:".$row['login'];
+		echo "<p><img src=img/".$row['photo'].">";
+		echo "<p>".t($lang,'login').":".$row['login'];
 		if ($_SESSION['ent'] == 2  && $_SESSION['login'] == $login){
-			echo "<p>Email:".$row['email'];
+			echo "<p>".t($lang,'email').":".$row['email'];
 		}
-		echo "<p>Name:".$row['name'];
-		echo "<p> Surname:".$row['surname'];
-		echo "<p>Date of registration:".$row['date_reg'];
-		echo "<p>Date of last loginned:".$row['date_log'];
+		echo "<p>".t($lang,'name').":".$row['name'];
+		echo "<p> ".t($lang,'surname').":".$row['surname'];
+		echo "<p>".t($lang,'date_of_registration').":".$row['date_reg'];
+		echo "<p>".t($lang,'date_of_login').":".$row['date_log'];
 		if ($_SESSION['ent'] == 2 && $_SESSION['login'] == $login){
 			$link="change_profil.php?id=".$row['id'];
-			echo "<p><a href=".$link.">Change</a>";
+			echo "<p><a href=".$link.">".t($lang,'change')."</a>";
 			$link="delete_profil.php?id=".$row['id'];
-			echo "<p><a href=".$link.">Delete	</a>";
+			echo "<p><a href=".$link.">".t($lang,'delete')."	</a>";
 		}		
 	}else{
-		echo"User with that id not exist";
+		echo t($lang,'user_id_not_exist');
 	}
 	echo "</div> ";
 	if (!isset($_SESSION['ent'])){	
@@ -57,16 +58,14 @@
 			echo $_SESSION['erlog'];	
 			$_SESSION['erlog']='';	
 		}	
-		echo "  <FORM ACTION='' METHOD='POST'>	
-		<a href='reg.html'>registation</a>	
-		</FORM> ";		
+		echo "<div class='rightside'>  
+		<a href='reg.html'>registation</a>	";		
 		include( "login.html");	
 	}	
 	else 	
-	{	
-		echo '<FORM ACTION="" METHOD="POST">	
-		<input type="submit" name="create_news" value="Create News">	
-		<input type="submit" name="exit" value="Exit">  </FORM>';	
+	{
+		echo "<div class='rightside'>"; 
+		include('rightside_enter.php');
 	}	
 	echo "</div></body></html>";	
 	

@@ -17,7 +17,11 @@
 			$_SESSION['ent'] = 2;   
 			$_SESSION['login'] =$login;
 			$_SESSION['profil_id']=$row['id'];
+			$STH = $DBH->prepare("UPDATE user SET date_log= :date_log  WHERE id=".$row['id']);  
+			$STH->bindParam(':date_log', date("l dS of F Y "), PDO::PARAM_STR);
+			$STH->execute();
 			$_SESSION['roles']=unserialize($row['roles']);
+			
 			if(in_array('locked',$_SESSION['roles'])){
 				$_SESSION['ent'] = 2;
 				$_SESSION['login'] ='';

@@ -12,9 +12,8 @@
 			$error = 1;
 		} else{
 			$STH = $DBH->query('SELECT * from user WHERE login='.$login);  
-			if(!empty($STH)){
 			$STH->setFetchMode(PDO::FETCH_ASSOC);
-			$row = $STH->fetch();
+			while($row = $STH->fetch()){
 			
 				array_push($error_reg,'user with that login exist');
 				$error = 1;
@@ -52,8 +51,8 @@
 				$date_reg=date("l dS of F Y ");		
 				$roles = array();
 				$user='user';
-				array_push($user,$roles);
-				$data = array($login,$password	,$email,$date_reg,"img/empty.jpg",serialize($roles));
+				array_push($roles,$user);
+				$data = array($login,$password	,$email,$date_reg,"empty.jpg",serialize($roles));
 				$STH = $DBH->prepare("INSERT INTO user (login,password,email,date_reg,photo,roles) values (	?, ?,?,?,?,?)");  
 				$STH->execute($data);
 				$_SESSION['ent'] = 2;   

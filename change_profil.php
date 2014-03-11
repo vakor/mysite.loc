@@ -1,6 +1,8 @@
 <?php 
 	session_start();
 	include("connect_db.php");
+	include("translate.php");
+	include('set_lang.php');
 	if(empty($_SESSION['roles'])){
 	$_SESSION['roles']=array();
 	}
@@ -113,7 +115,7 @@
 		<body>
 		<div  class="head">
 		<a href="index.php">HOME<a>';
-		include('language.html');
+		include('language.php');
 		
 			echo'</div>
 		<p>
@@ -142,20 +144,21 @@
 				$check='';
 				if(in_array('user',$_SESSION['roles'])){
 				$check=' checked ';
+				
 				}
 				echo'<input type="checkbox" name="user" value="user"'.$check.'>User<br>';
 				$check='';
-				if(in_array('user',$_SESSION['roles'])){
+				if(in_array('admin',$_SESSION['roles'])){
 				$check=' checked ';
 				}
 				echo'<input type="checkbox" name="admin" value="admin"'.$check.'>Admin<br>';
 				$check='';
-				if(in_array('user',$_SESSION['roles'])){
+				if(in_array('moderator',$_SESSION['roles'])){
 				$check=' checked ';
 				}
 				echo'<input type="checkbox" name="moderator" value="moderator"'.$check.'>Moderator<br>';
 				$check='';
-				if(in_array('user',$_SESSION['roles'])){
+				if(in_array('locked',$_SESSION['roles'])){
 				$check=' checked ';
 				}
 				echo'<input type="checkbox" name="locked" value="locked"'.$check.'>Locked<br>';
@@ -184,11 +187,8 @@
 			</FORM> ";		
 			include( "login.html");	
 		}	
-		else 	
-		{	
-			echo '<FORM ACTION="" METHOD="POST">	
-			<input type="submit" name="create_news" value="Create News">	
-			<input type="submit" name="exit" value="Exit">  </FORM>';	
+		else{	
+			include('rightside_enter.php');
 		}	
 		echo "</div></body></html>";	
 		}else{

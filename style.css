@@ -29,3 +29,7 @@
 	float:left;
 	width:85%;  
 }
+.comment{
+	border: 2px  solid black;
+	width:45%;  
+}

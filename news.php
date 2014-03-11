@@ -6,6 +6,8 @@
 		$id = 1; 
 	} 
 	include("connect_db.php");
+	include("translate.php");
+	include('set_lang.php');
 	$STH = $DBH->query("SELECT (*)  FROM post WHERE id = ".$id); 
 	if (!empty($STH)) 
 	{ 
@@ -44,7 +46,7 @@
 		while($row = $STH->fetch()) 
 		{ 
 			echo '<div class="post">'; 
-			echo "<b>".$row['title']."</b><p>"; 
+			echo "<b>".$row['title']."</b><p></div>"; 
 			echo '<div class="post">';  
 			echo $row['text']; 
 			echo "</div>"; 
@@ -58,8 +60,11 @@
                  $s = "delete.php?id=".$id;    
                  echo"<p><a href=".$s.">DELETE<a>"; 
 			} 
-		}  
-		echo ' </div></div> <div class="rightside">'; 
+		}
+		include('comment.php');
+		echo '</div>';
+		
+		echo'</div><div class="rightside">'; 
 	} 
 	if ($_SESSION['ent'] == 3) 
 		{ 
@@ -69,9 +74,8 @@
 			include( "login.html"); 
 		}else  
 		{
-			echo '<FORM ACTION="" METHOD="POST"> 
-			<input type="submit" name="crn" value="Create News"> 
-			<input type="submit" name="exit" value="Exit">'; 
+			include('rightside_enter.php');
 		}
-		echo "</div>";    
+		echo "</div>";
+		
 ?>
