@@ -1,34 +1,25 @@
-<?phpecho $_SERVER['PHP_SELF'];
-exit;
+<?php
+
 	session_start();
+	include('set_lang.php');
+	echo $lang;
 	include("connect_db.php");
-	if (isset($_POST['exit']))
-	{
-		$_SESSION['ent'] = 3;
-	}
-	if (isset($_POST['create_news']))
-	{
+	include("translate.php");
+	if (isset($_POST['create_news'])){
 		Header("Location: addnews.html"); 
 	}
 		
-	if (empty($_GET['page']))	
-	{	
+	if (empty($_GET['page']))	{	
 		$page = 1;	
-	}else
-	{
-	$page = $_GET['page'];	
+	}else{
+		$page = $_GET['page'];	
 	}
-	
-	echo '<html>	
-	<head><link rel="stylesheet" type="text/css" href="style.css"></head>	
-	<body>	
-	<div class="head">	
-	</div>	
-	<p>	
+	include('header.html');
+	echo '		
 	<div class="leftside">	
 	gfdfghjkl,kjhgf	
 	</div>			
-	<div class="center">';	
+	<div class="center">';
 	$STH = $DBH->query("SELECT COUNT(*) as count FROM post");	
 	$STH->setFetchMode(PDO::FETCH_ASSOC);	
 	$row = $STH->fetch();	
@@ -47,19 +38,25 @@ exit;
 	}	
 	$max = $page*10;	
 	$min = $page*10 - 10;	
-	$strSQL = "SELECT id,title,author,data,short_text,text from post LIMIT ".$min.", 10";		
+	$strSQL = "SELECT * from post LIMIT ".$min.", 10";		
 	$STH = $DBH->query($strSQL);  			
 	while($row = $STH->fetch()) 	
 	{  	
 		echo '<div class="post">';	
+		if($lang == 'eng'){
 		echo"<b>".$row['title']."</b>";	
 		echo '</div><div class="post">';	
-		echo $row['short_text'];	
+		echo $row['short_text'];
+		}else{
+			echo"<b>".$row['title_ukr']."</b>";	
+			echo '</div><div class="post">';	
+			echo $row['text_short_ukr'];
+		}
 		$s = "news.php?id=".$row['id'];	
-		echo"<a href=".$s.">Read more</a>";	
-		echo '</div><div class="post">';	
-		echo "<p>avtor:".$row['author']."data: ".$row['data'];	
-		echo '</div>';	
+		echo"<a href=".$s.">".t($lang,'read_more')."</a>";	
+		echo '</div><div class="post">';
+		$link_profil="profil.php?id=".$row['author_id'];
+		echo"<p>author:<a href=".$link_profil.">".$row['author']."</a>data: ".$row['data']."<p></div>"; 
 	}
 	
 	$previous_page = $page-1;
@@ -88,11 +85,9 @@ exit;
 		</FORM> ";		
 		include( "login.html");	
 	}	
-	else 	
-	{	
-		echo '<FORM ACTION="" METHOD="POST">	
-		<input type="submit" name="create_news" value="Create News">	
-		<input type="submit" name="exit" value="Exit">  </FORM>';	
+	else{
+		include('rightside_enter.php');
 	}	
-	echo "</div></body></html>";	
+	echo "</div></body></html>";
+	
   ?>

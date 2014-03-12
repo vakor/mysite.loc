@@ -1,0 +1,8 @@
+<html>	
+	<head><link rel="stylesheet" type="text/css" href="style.css"></head>	
+	<body>	
+	<div class="head">
+	<?php include("language.php"); ?>
+<p> <H1>FOOTBALL</H1>
+  </div>
+  <p>

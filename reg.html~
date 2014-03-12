@@ -27,6 +27,5 @@
   <?php echo'<input type="submit" name="register" value='.t($lang,'register').'>';?>
   </form>
  </div>
-<?php include('rightside.php'); ?>
 </body>
 </html>

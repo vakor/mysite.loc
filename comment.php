@@ -1,8 +1,5 @@
 <?php
-	$id=1;
-	$lang='ukr';
-	include('translate.php');
-  include('form_add_com.php');
+
 	 
   if (empty($_GET['page_com']))	{	
 		$page_com = 1;	
@@ -10,8 +7,15 @@
 		$page_com = $_GET['page_com'];	
 	}
 	include('connect_db.php');
-	$STH = $DBH->query(" SELECT COUNT * as count FROM comment");
-	$row = $STH->fetch(PDO::FETCH_ASSOC);
+	//$STH = $DBH->query(" SELECT COUNT (*) as count FROM comment");
+	//$row = $STH->fetch(PDO::FETCH_ASSOC);
+$m = $DBH->lastInsertId(); 
+echo $m;
+exit;
+$row = $STH->fetch(PDO::FETCH_ASSOC);
+print_r( $row['count']);
+
+	exit;
 	$m=$row['count'];
 	$posts = $m;	
 	echo $posts;

@@ -160,8 +160,29 @@ include('leftside.html');
 		}else{
 			echo"User with that id not exist";
 		}
-		echo "</div></div>";
-	}
-		include('rightside.php');
-	
+		echo "</div></div><div class='rightside'> ";
+		if (!isset($_SESSION['ent'])){	
+			$_SESSION['ent'] = 3;	
+		}	
+		if ($_SESSION['ent'] == 3){	
+			if (!empty($_SESSION['erreg'])){	
+				echo $_SESSION['erreg'];	
+				$_SESSION['erreg'] = '';	
+			}	
+			if (!empty($_SESSION['erlog'])){	
+				echo $_SESSION['erlog'];	
+				$_SESSION['erlog']='';	
+			}	
+			echo "  <FORM ACTION='' METHOD='POST'>	
+			<a href='reg.html'>registation</a>	
+			</FORM> ";		
+			include( "login.html");	
+		}	
+		else{	
+			include('rightside_enter.php');
+		}	
+		echo "</div></body></html>";	
+		}else{
+			echo "2you can't change this profil<p><a href=".$_SERVER['HTTP_REFERER'].">Back</a>";
+		}
 ?>

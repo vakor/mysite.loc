@@ -1,36 +1,92 @@
 .head { /*  */  
-	border: 4px solid black;
+	background-color: RGB(107, 142, 35);
 	height:100;
 	width:100%; 
 }
-.leftside {
-	border: 4px solid black;
-	float: left;
-	height:500;
-	width:200;
+.head A{ 
+	text-decoration: none;
+	color: RGB(244,196,48);
+
 }
-.center { 
-	border: 4px  solid black;
+.leftside {
+	background-color: RGB(153, 149, 140);
+	float: left;
+	height:650;
+	width:16%;
+
+}
+.center {
+	background-color: RGB(100, 149, 237);
 	float:left;
-	width:400; 
+	width:60%; 
 }
 .post {
-	border: 1px  solid black;
 	float:left;
-	width:95%;  	
+	width:100%;   	
 }
 .rightside {
-	border: 4px solid black;
+	background-color:RGB(251, 236, 93) ; 
 	float:right;
-	width:350;   	
+	width:20%;   	
+}
+.rightside A{
+	background-color: RGB(255, 253, 223);
+ 	text-decoration: none;
+	padding: 4px; 
+	-moz-border-radius:3px;
+  	border-radius:24px;
+   	-webkit-border-radius:3px;
+   	font-family:Tahoma;
+ 	border:  solid black;
 }
 .row{
-	border: 2px  solid black;
 	float:left;
 	width:85%;  
 }
-.comment{
-	border: 2px  solid black;
-	float:center;
-	width:70%;  
+.comment{	
+	width:45%;  
 }
+.title{
+	background-color:RGB(204, 255, 0) ; 
+	float:left;
+	width:100%;
+}
+
+.text{
+	background-color:RGB(242, 221, 198) ;
+	float:left;
+	width:100%;
+}
+.author{
+	background-color: RGB(76, 88, 102);
+	float:left;
+	width:100%;
+	margin-bottom:50px;
+}
+
+
+
+h1{
+
+
+}
+
+a.button{
+	background-color: RGB(255, 253, 223);
+ 	text-decoration: none;
+	padding: 4px; 
+	-moz-border-radius:3px;
+  	border-radius:24px;
+   	-webkit-border-radius:3px;
+   	font-family:Tahoma;
+ 	border:  solid black;
+}
+.navigate{
+	text-align: center;
+	background-color: RGB(124, 93, 251);
+}
+
+
+
+
+

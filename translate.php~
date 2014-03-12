@@ -45,7 +45,7 @@ $voc = array (
 		"text" => "Текст",
 		"add" => "Додати",
 		"user_menu" => "Меню користувача",
-		"register" => "Зареєструвати",
+		"register" => "Register",
 		),
   );
 
