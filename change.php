@@ -3,15 +3,16 @@
 	include('set_lang.php');
 	include('translate.php');
 	include("connect_db.php");
-	$STH = $DBH->query('SELECT * from post WHERE id='.$id);
-	$STH->setFetchMode(PDO::FETCH_ASSOC);
-	$row = $STH->fetch(); 
-	if (($_SESSION['ent'] == 2 && $row['author'] == $_SESSION['login']) || in_array('admin',$_SESSION['roles'])){
-	$id = (int)$_GET['id'];
+		$id = (int)$_GET['id'];
 	if ($id < 1) 
 	{
 		$id = 1;
 	}
+	$STH = $DBH->query('SELECT * from post WHERE id='.$id);
+	$STH->setFetchMode(PDO::FETCH_ASSOC);
+	$row = $STH->fetch(); 
+	if (($_SESSION['ent'] == 2 && $row['author'] == $_SESSION['login']) || in_array('admin',$_SESSION['roles'])){
+
 
 	if (isset($_POST['exit']))
 	{

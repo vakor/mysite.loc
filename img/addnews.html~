@@ -1,0 +1,28 @@
+<html>
+ <head><link rel="stylesheet" type="text/css" href="style.css"></head>	
+<body>
+<?php include('header.html');
+include('leftside.html');
+include('setlang.php');
+include('translate.php'); ?>
+ <div  class="center">
+ <FORM ACTION='add.php' METHOD='POST'>
+  English
+  <p>
+  <input type="text" name="title">
+  <p>
+  <textarea name="text"> </textarea>
+  <p>
+   Українською
+   <p>
+  <input type="text" name="title_ukr">
+  <p>
+  <textarea name="text_ukr"> </textarea>
+  <p>
+  <input type="submit" name="add" value="Add news">
+ </form>
+ </div>
+<?php include('rightside.php');
+ ?>
+</body>
+</html>

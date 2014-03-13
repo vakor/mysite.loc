@@ -88,12 +88,7 @@
 		//upload photo
 				
 		//
-		if(empty($photo)){
-			$photo = $row['photo'];
-		}
-		$STH = $DBH->prepare("UPDATE user SET photo= :photo  WHERE id=$id");  
-		$STH->bindParam(':photo', $photo, PDO::PARAM_STR);
-		$STH->execute();
+		
 		$s = "profil.php?id=".$id;
 		Header("Location: ".$s); 
 		}else{
@@ -119,9 +114,9 @@ include('leftside.html');
 		$row = $STH->fetch();
 		if(!empty($row)){
 			$photo=$row['photo'];
-			echo "<form ACTION='' METHOD='POST' enctype='multipart/form-data'>";
 			echo "<p><img height='150' width='150' src=img/".$row['photo'].">";
-			echo '<input type="file" name="file">';
+			include('upload_form.html');
+			echo "<form METHOD='POST' ACTION=''>";
 			echo "<p>Login:<input type='text' name='login' value=".$row['login'].">";
 			echo "<p>Email:<input type='text' name='email' value=".$row['email'].">";
 			echo "<p>Password:<input type='password' name='password' value=".$row['password'].">";
