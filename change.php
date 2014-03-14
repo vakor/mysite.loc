@@ -59,7 +59,7 @@
 	echo ' </div>';
 	include('rightside.php');
 	}else{
-		echo"you cant change this post<a href='index.php'>Home</a>";
+		echo"you cant change this news<a href='index.php'>Home</a>";
 	}
 
 ?>

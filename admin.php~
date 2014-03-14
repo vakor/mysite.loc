@@ -11,7 +11,6 @@
 	}
 	
 	include('translate.php');
-	include('set_lang.php');
 	include('header.html');
 	include('leftside.html');
 	echo'<div class="center">';	

@@ -22,7 +22,9 @@ $voc = array (
 		"text" => "Text",
 		"add" => "Add",
 		"user_menu" => "User menu",
-		"register" => "Register",		
+		"register" => "Register",
+		"upload" => "Upload",
+		"file" => "FILE",	
 		),
 	"ukr" => array(
 		"login" => "Логін",
@@ -46,6 +48,8 @@ $voc = array (
 		"add" => "Додати",
 		"user_menu" => "Меню користувача",
 		"register" => "Зареєструвати",
+		"upload" => "Завантажити",
+		"file" => "Файл",
 		),
   );
 

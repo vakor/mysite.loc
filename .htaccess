@@ -1,1 +1,2 @@
 AddType application/x-httpd-php .php .htm .html
+php_value upload_max_filesize 30M

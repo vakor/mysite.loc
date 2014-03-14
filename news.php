@@ -38,7 +38,7 @@
 			echo "</div>"; 
 			echo '<div class="author">';
 			$link_profil="profil.php?id=".$row['author_id'];
-		echo"<p>author:<a href=".$link_profil.">".$row['author']."</a>data: ".$row['data']."<p></div>";
+		echo"<p>".t($lang,'author').":<a href=".$link_profil.">".$row['author']."</a>".t($lang,'date').": ".$row['data']."<p></div>";
 			$s = "change.php?id=".$id; 
 			if ($_SESSION['ent'] == 2 && $_SESSION['login'] == $row['author']) 
 			{ 
