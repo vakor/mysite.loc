@@ -25,6 +25,12 @@ $voc = array (
 		"register" => "Register",
 		"upload" => "Upload",
 		"file" => "FILE",	
+		"date" => "Date",
+		"vote" => "Vote",
+		"not_voted"=>"For metrial Nobody has voted",
+		"mark" => "Mark: ",
+		"voted" => " Voted: ",
+		"users" => " Users: ",
 		),
 	"ukr" => array(
 		"login" => "Логін",
@@ -50,6 +56,12 @@ $voc = array (
 		"register" => "Зареєструвати",
 		"upload" => "Завантажити",
 		"file" => "Файл",
+		"date" => "Дата",
+		"vote" => "Голосувати",
+		"not_voted"=>"За цей метріал ще ніхто не голосував",
+		"mark" => "Оцінка: ",
+		"voted" => " Проголосували: ",
+		"users" => " Користувачів: ",
 		),
   );
 

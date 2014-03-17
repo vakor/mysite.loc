@@ -61,7 +61,7 @@
 	background-color: RGB(76, 88, 102);
 	float:left;
 	width:100%;
-	margin-bottom:50px;
+	margin-bottom:15px;
 }
 
 

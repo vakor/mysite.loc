@@ -1,0 +1,14 @@
+<?php
+session_start();
+include('connect_db.php');
+$post_id = $_GET['post_id'];
+$mark = $_POST['mark'];
+$user_id = $_SESSION['profil_id'];
+$sql = "INSERT INTO vote (user_id, post_id,mark) VALUES(:user_id, :post_id, :mark)";
+$STH = $DBH->prepare($sql)
+$STH->bindValues(':user_id',$user_id);
+$STH->bindValues(':post_id',$post_id);
+$STH->bindValues(':mark',$mark);
+$STH->execute();
+
+?>

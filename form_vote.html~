@@ -1,0 +1,9 @@
+
+<form METHOD="POST" ACTION="vote.php?id=3">
+<input type="radio" name="mark" value="1">1
+<input type="radio" name="mark" value="2">2
+<input type="radio" name="mark" value="3" checked>3
+<input type="radio" name="mark" value="4">4
+<input type="radio" name="mark" value="5">5
+<input type="submit" name="vote" value="<? include('translate.php');echo t('ukr','vote');?>">
+</form>
