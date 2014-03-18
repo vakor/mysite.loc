@@ -8,10 +8,10 @@
 	}else
 	{
 		include("connect_db.php");
-		$STH = $DBH->query('SELECT * from user WHERE login='.$login);  
-		if(!empty($STH)){
-		$STH->setFetchMode(PDO::FETCH_ASSOC); 
-		$row = $STH->fetch();	
+		$STH = $DBH->prepare('SELECT * from user WHERE login=:login');  
+		$STH->bindValue(':login',$login,PDO::FETCH_ASSOC);
+		$STH->execute();
+		$row = $STH->fetch(PDO::FETCH_ASSOC);
 		if ($row['password']==$password && $row['login']==$login){
 			$_SESSION['relog']='your loginned';
 			$_SESSION['ent'] = 2;   
@@ -34,6 +34,6 @@
         $_SESSION['erlog'] = "Incorrect login or password"; 
   		}   
 		}
-	}	
+		
 	header("Location:". $_SERVER['HTTP_REFERER'] ); 
 ?>

@@ -1,0 +1,38 @@
+<html>
+<head> <link rel="stylesheet" type="text/css" href="style.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="reg.js"></script>
+</head>
+<body>
+<?php include('header.html'); ?>
+ <p>
+<?php include('leftside.html'); ?>
+<?php include('translate.php'); ?>
+<?php include('set_lang.php'); ?>
+ <div class="center">
+  <?php
+  session_start();
+  if (!empty($_SESSION['erreg']))
+  {
+  foreach ($_SESSION['erreg'] as $value) {
+   echo "<p><b>$value</b>";
+  }
+   $_SESSION['erreg'] = array();
+  }
+  ?>
+  <form method='POST' id='myform'>
+  <?=t($lang,'login')?> <p>
+  <input id="login" type="text" name="login" >
+  <p>
+  <?=t($lang,'password')?><p><input id="password" type="password" name="password"  ><p>
+  <?=t($lang,'password')?><p><input id="re_password" type="password" name="re_password" ><p>
+  <?=t($lang,'email')?><p><input id="email" type="text" name="email" ><p>
+  <?php echo' <button name="register" id="submit-form">'.t($lang,'register').'</button>';?>
+ </form>
+
+
+  </div>
+    <?php include('rightside.php'); ?>
+  </body>
+</html>
+

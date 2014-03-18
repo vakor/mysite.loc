@@ -1,0 +1,7 @@
+function sform(){
+		
+	alert(document.getElementById('login').value);
+	}
+
+
+
