@@ -18,7 +18,7 @@
 			$_SESSION['login'] =$login;
 			$_SESSION['profil_id']=$row['id'];
 			$STH = $DBH->prepare("UPDATE user SET date_log= :date_log  WHERE id=".$row['id']);  
-			$STH->bindParam(':date_log', time());
+			$STH->bindParam(':date_log', time(), PDO::PARAM_STR);
 			$STH->execute();
 			$_SESSION['roles']=unserialize($row['roles']);
 			
