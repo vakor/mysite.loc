@@ -31,8 +31,10 @@ $voc = array (
 		"mark" => "Mark: ",
 		"voted" => " Voted: ",
 		"users" => " Users: ",
-		),
+		"surname" => "Surname",		
+),
 	"ukr" => array(
+		"surname" => "Призвіще",
 		"login" => "Логін",
 		"password" => "Пароль",
 		"email" => "Пошта",

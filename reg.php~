@@ -48,7 +48,7 @@
 		}
 	}
 	if ($error == 2 ){
-		$date_reg=time();		
+		$date_reg=date("l dS of F Y ");		
 		$roles = array();
 		$user='user';
 		array_push($roles,$user);

@@ -2,6 +2,7 @@
 <head></head>
 <h1>111</h1>
 <body>
-<?='lolo'?>
+<?php echo "ololo";
+  echo pow(2,5);            ?>
 </body>
 </html>

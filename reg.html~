@@ -1,8 +1,8 @@
 <html>
-<head> <link rel="stylesheet" type="text/css" href="style.css"></head>
+<head> <link rel="stylesheet" type="text/css" href="style.css" > </head>
 <body>
 <?php include('header.html'); ?>
- <p>
+<br>
 <?php include('leftside.html'); ?>
 <?php include('translate.php'); ?>
 <?php include('set_lang.php'); ?>
@@ -27,5 +27,6 @@
   <?php echo'<input type="submit" name="register" value='.t($lang,'register').'>';?>
   </form>
  </div>
+<?php include('rightside.php'); ?>
 </body>
 </html>

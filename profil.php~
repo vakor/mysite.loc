@@ -37,27 +37,7 @@
 		echo t($lang,'user_id_not_exist');
 	}
 	echo "</div> ";
-	if (!isset($_SESSION['ent'])){	
-		$_SESSION['ent'] = 3;	
-	}	
-	if ($_SESSION['ent'] == 3){	
-		if (!empty($_SESSION['erreg'])){	
-			echo $_SESSION['erreg'];	
-			$_SESSION['erreg'] = '';	
-		}	
-		if (!empty($_SESSION['erlog'])){	
-			echo $_SESSION['erlog'];	
-			$_SESSION['erlog']='';	
-		}	
-		echo "<div class='rightside'>  
-		<a href='reg.html'>registation</a>	";		
-		include( "login.html");	
-	}	
-	else 	
-	{
-		echo "<div class='rightside'>"; 
-		include('rightside_enter.php');
-	}	
+	include('rightside.php');
 	echo "</div></body></html>";	
 	
  

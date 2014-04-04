@@ -1,5 +1,6 @@
 <?php 
 	session_start();
+print_r($_SESSION['roles']);exit;
 	include("connect_db.php");
 	include("translate.php");
 	include('set_lang.php');
@@ -88,12 +89,7 @@
 		//upload photo
 				
 		//
-		if(empty($photo)){
-			$photo = $row['photo'];
-		}
-		$STH = $DBH->prepare("UPDATE user SET photo= :photo  WHERE id=$id");  
-		$STH->bindParam(':photo', $photo, PDO::PARAM_STR);
-		$STH->execute();
+		
 		$s = "profil.php?id=".$id;
 		Header("Location: ".$s); 
 		}else{
@@ -119,14 +115,14 @@ include('leftside.html');
 		$row = $STH->fetch();
 		if(!empty($row)){
 			$photo=$row['photo'];
-			echo "<form ACTION='' METHOD='POST' enctype='multipart/form-data'>";
 			echo "<p><img height='150' width='150' src=img/".$row['photo'].">";
-			echo '<input type="file" name="file">';
-			echo "<p>Login:<input type='text' name='login' value=".$row['login'].">";
-			echo "<p>Email:<input type='text' name='email' value=".$row['email'].">";
-			echo "<p>Password:<input type='password' name='password' value=".$row['password'].">";
-			echo "<p>Name:<input type='text' name='name' value=".$row['name']."> <p>Surname:<input type='text' name='surname' value=".$row['surname'].">";
-			echo	"<p><input type='submit' name='change_profil' value='Change'>";
+			include('upload_form.html');
+			echo "<form METHOD='POST' ACTION=''>";
+			echo "<p>".t($lang,'login').":<input type='text' name='login' value=".$row['login'].">";
+			echo "<p>".t($lang,'email').":<input type='text' name='email' value=".$row['email'].">";
+			echo "<p>".t($lang,'password').":<input type='password' name='password' value=".$row['password'].">";
+			echo "<p>".t($lang,'name').":<input type='text' name='name' value=".$row['name']."> <p>".t($lang,'surname').":<input type='text' name='surname' value=".$row['surname'].">";
+			echo	"<p><input type='submit' name='change_profil' value=".t($lang,'change').">";
 			echo	"</form>";
 			//admin
 			if(in_array('admin',$_SESSION['roles'])){
@@ -160,29 +156,8 @@ include('leftside.html');
 		}else{
 			echo"User with that id not exist";
 		}
-		echo "</div></div><div class='rightside'> ";
-		if (!isset($_SESSION['ent'])){	
-			$_SESSION['ent'] = 3;	
-		}	
-		if ($_SESSION['ent'] == 3){	
-			if (!empty($_SESSION['erreg'])){	
-				echo $_SESSION['erreg'];	
-				$_SESSION['erreg'] = '';	
-			}	
-			if (!empty($_SESSION['erlog'])){	
-				echo $_SESSION['erlog'];	
-				$_SESSION['erlog']='';	
-			}	
-			echo "  <FORM ACTION='' METHOD='POST'>	
-			<a href='reg.html'>registation</a>	
-			</FORM> ";		
-			include( "login.html");	
-		}	
-		else{	
-			include('rightside_enter.php');
-		}	
-		echo "</div></body></html>";	
-		}else{
-			echo "2you can't change this profil<p><a href=".$_SERVER['HTTP_REFERER'].">Back</a>";
-		}
+		echo "</div></div>";
+	}
+		include('rightside.php');
+	
 ?>

@@ -30,7 +30,7 @@
 		if ($_SESSION['ent'] == 2 && $_SESSION['login'] == $login){
 			$link="change_profil.php?id=".$row['id'];
 			echo "<p><a href=".$link.">".t($lang,'change')."</a>";
-			$link="delete_profil.php?id=".$row['id'];
+			$link="del_prof.php?id=".$row['id'];
 			echo "<p><a href=".$link.">".t($lang,'delete')."	</a>";
 		}		
 	}else{

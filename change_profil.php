@@ -1,5 +1,6 @@
 <?php 
 	session_start();
+//print_r($_SESSION['roles']);exit;
 	include("connect_db.php");
 	include("translate.php");
 	include('set_lang.php');
@@ -117,11 +118,11 @@ include('leftside.html');
 			echo "<p><img height='150' width='150' src=img/".$row['photo'].">";
 			include('upload_form.html');
 			echo "<form METHOD='POST' ACTION=''>";
-			echo "<p>Login:<input type='text' name='login' value=".$row['login'].">";
-			echo "<p>Email:<input type='text' name='email' value=".$row['email'].">";
-			echo "<p>Password:<input type='password' name='password' value=".$row['password'].">";
-			echo "<p>Name:<input type='text' name='name' value=".$row['name']."> <p>Surname:<input type='text' name='surname' value=".$row['surname'].">";
-			echo	"<p><input type='submit' name='change_profil' value='Change'>";
+			echo "<p>".t($lang,'login').":<input type='text' name='login' value=".$row['login'].">";
+			echo "<p>".t($lang,'email').":<input type='text' name='email' value=".$row['email'].">";
+			echo "<p>".t($lang,'password').":<input type='password' name='password' value=".$row['password'].">";
+			echo "<p>".t($lang,'name').":<input type='text' name='name' value=".$row['name']."> <p>".t($lang,'surname').":<input type='text' name='surname' value=".$row['surname'].">";
+			echo	"<p><input type='submit' name='change_profil' value=".t($lang,'change').">";
 			echo	"</form>";
 			//admin
 			if(in_array('admin',$_SESSION['roles'])){

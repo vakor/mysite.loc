@@ -30,8 +30,11 @@ $voc = array (
 		"not_voted"=>"For metrial Nobody has voted",
 		"mark" => "Mark: ",
 		"voted" => " Voted: ",
-		),
+		"users" => " Users: ",
+		"surname" => "Surname",		
+),
 	"ukr" => array(
+		"surname" => "Призвіще",
 		"login" => "Логін",
 		"password" => "Пароль",
 		"email" => "Пошта",
@@ -60,6 +63,7 @@ $voc = array (
 		"not_voted"=>"За цей метріал ще ніхто не голосував",
 		"mark" => "Оцінка: ",
 		"voted" => " Проголосували: ",
+		"users" => " Користувачів: ",
 		),
   );
 
