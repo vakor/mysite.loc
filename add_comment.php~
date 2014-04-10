@@ -6,6 +6,7 @@ include('set_lang.php');
 		$title = $_POST['title'];
 		$text = $_POST['text'];
 		$author = $_SESSION['login'];
+echo $lang;exit;
 		$author_id = $_SESSION['profil_id'];
 		include("connect_db.php");
 		$STH = $DBH->prepare("INSERT INTO comment (title,text,author,author_id,post_id,lang) values (?,?,?,?,?,?)");

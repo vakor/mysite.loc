@@ -2,7 +2,12 @@
 <head></head>
 <h1>111</h1>
 <body>
-<?php echo "ololo";
-  echo pow(2,5);            ?>
+<?php
+$z = 'c';
+ echo md5($z); echo"<br>";
+
+echo sha1($z);echo"<br>";
+
+?>
 </body>
 </html>

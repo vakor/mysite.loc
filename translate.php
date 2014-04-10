@@ -31,8 +31,12 @@ $voc = array (
 		"mark" => "Mark: ",
 		"voted" => " Voted: ",
 		"users" => " Users: ",
-		"surname" => "Surname",		
-),
+		"surname" => "Surname",
+		"user" => "User",
+		"admin" => "Admin",
+		"moder" => "Moder",
+		"locked" => "Locked"
+	),
 	"ukr" => array(
 		"surname" => "Призвіще",
 		"login" => "Логін",
@@ -64,8 +68,12 @@ $voc = array (
 		"mark" => "Оцінка: ",
 		"voted" => " Проголосували: ",
 		"users" => " Користувачів: ",
-		),
-  );
+		"user" => "Користувач",
+		"admin" => "Адміністратор",
+		"moder" => "Модератор",
+		"locked" => "Заблокований"
+	),
+);
 
 function t($language, $word){
 	global $voc;

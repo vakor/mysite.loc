@@ -3,8 +3,7 @@
 	$id = (int)$_GET['id']; 
 	if( $id < 1  ) { 
 		$id = 1; 
-	}
-	
+	}	
 	include("connect_db.php");
 	include("translate.php");
 	include('set_lang.php');

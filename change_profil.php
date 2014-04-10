@@ -133,24 +133,24 @@ include('leftside.html');
 				$check=' checked ';
 				
 				}
-				echo'<input type="checkbox" name="user" value="user"'.$check.'>User<br>';
+				echo'<input type="checkbox" name="user" value="user"'.$check.'>'.t($lang,'user').'<br>';
 				$check='';
 				if(in_array('admin',$_SESSION['roles'])){
 				$check=' checked ';
 				}
-				echo'<input type="checkbox" name="admin" value="admin"'.$check.'>Admin<br>';
+				echo'<input type="checkbox" name="admin" value="admin"'.$check.'>'.t($lang,'admin').'<br>';
 				$check='';
 				if(in_array('moderator',$_SESSION['roles'])){
 				$check=' checked ';
 				}
-				echo'<input type="checkbox" name="moderator" value="moderator"'.$check.'>Moderator<br>';
+				echo'<input type="checkbox" name="moderator" value="moderator"'.$check.'>'.t($lang,'moder').'<br>';
 				$check='';
 				if(in_array('locked',$_SESSION['roles'])){
 				$check=' checked ';
 				}
-				echo'<input type="checkbox" name="locked" value="locked"'.$check.'>Locked<br>';
+				echo'<input type="checkbox" name="locked" value="locked"'.$check.'>'.t($lang,'locked').'<br>';
 				
-				echo'<input	type="submit" >
+				echo'<input	type="submit" value='.t($lang,'change').' >
 				</form>';
 			}//
 		}else{

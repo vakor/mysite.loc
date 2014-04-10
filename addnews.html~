@@ -3,7 +3,7 @@
 <body>
 <?php include('header.html');
 include('leftside.html');
-include('setlang.php');
+include('set_lang.php');
 include('translate.php'); ?>
  <div  class="center">
  <FORM ACTION='add.php' METHOD='POST'>

@@ -3,7 +3,8 @@
 	$id = (int)$_GET['id']; 
 	if( $id < 1  ) { 
 		$id = 1; 
-	} 
+	}
+	
 	include("connect_db.php");
 	include("translate.php");
 	include('set_lang.php');
@@ -13,14 +14,15 @@
 	}	 
 	$sq = "SELECT * from post WHERE id=".$id;  
 	$STH = $DBH->query($sq);
-	$STH->setFetchMode(PDO::FETCH_ASSOC); 
+	$STH->setFetchMode(PDO::FETCH_ASSOC);
 	if( empty($STH)) { 
 		echo "POST EMPTY<P> <a href='index.php'>HOME</a>"; 
 	} else{ 
 		include('header.html');
 		include('leftside.html');
 		echo'
-		<div class="center">';   
+		<div class="center">';
+		
 		while($row = $STH->fetch()) 
 		{ 
 			echo '<div class="title"><p>'; 
@@ -29,6 +31,7 @@
 			}else{
 				echo "<b>".$row['title_ukr']."</b><p></div>";	
 			}
+			
 			echo '<div class="text">';
 			if($lang == 'eng'){
 				echo $row['text']; 
@@ -47,11 +50,13 @@
                  echo"<a class='button' href=".$s.">".t($lang,'delete')."</a></div>"; 
 			} 
 		}
+		include('comment.php');
 		echo '</div>';
-		//include('comment.php');
+		
 		
 		}
 			include('rightside.php');
+			include('mark.php');
 		echo"</body></html>";
 		
 ?>

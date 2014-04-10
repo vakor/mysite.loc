@@ -11,7 +11,10 @@ if ((($type == "image/jpeg")
     $type = $_FILES["userfile"]["type"];
     $pos_slash = strpos($_FILES["userfile"]["type"],"/");
     $uploadfile = time().chr(rand(65,90)).chr(rand(97,122)).".".substr($type,$pos_slash+1,strlen($type)-$pos_slash);
+//print_r($_FILES);
+echo $_FILES['userfile']['tmp_name']; exit;
     if (move_uploaded_file($_FILES['userfile']['tmp_name'],$uploaddir.$uploadfile)) {
+	//print_r($_FILES);exit;
         $STH = $DBH->prepare("SELECT * FROM user WHERE id=$id"); 
         $STH->execute();
         $row = $STH->fetch(PDO::PARAM_STR);
@@ -44,5 +47,5 @@ if ((($type == "image/jpeg")
     echo '<a href='.$_SERVER['HTTP_REFERER'].'>BACK</a>wrong type';
     exit;
 }
-    header('Location:'.$_SERVER['HTTP_REFERER']);
+header('Location:'.$_SERVER['HTTP_REFERER']);
 ?>
