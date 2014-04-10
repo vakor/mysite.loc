@@ -4,6 +4,9 @@ include('set_lang.php');
 	if($_SESSION['ent'] == 2 ){
 		$post_id =  $_GET['id'];
 		$title = $_POST['title'];
+		if (empty($title)){
+			$title = substr($text,0,15);
+		}
 		$text = $_POST['text'];
 		$author = $_SESSION['login'];
 		$author_id = $_SESSION['profil_id'];

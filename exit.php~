@@ -2,7 +2,7 @@
 session_start();
 
 $_SESSION[ent] = 3;// unset ($_SESSION['roles']);// => Array ( [0] => admin ) [id_roles] => 2 [erreg] => Array ( ) 
-//print_r($_SESSION);exit;
+print_r($_SESSION);exit;
 header('Location:'.$_SERVER['HTTP_REFERER']);
 
 ?>

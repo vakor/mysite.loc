@@ -1,12 +1,14 @@
 <?php
 session_start();
 include('set_lang.php');
-	if($_SESSION['ent'] == 2 ){
+	if($_SESSION['ent'] == 2 && (in_array('admin',$_SESSION['roles']) || in_array('moderator',$_SESSION['roles']) ) ){
 		$post_id =  $_GET['id'];
 		$title = $_POST['title'];
+		if (empty($title)){
+			$title = substr($text,0,15);
+		}
 		$text = $_POST['text'];
 		$author = $_SESSION['login'];
-echo $lang;exit;
 		$author_id = $_SESSION['profil_id'];
 		include("connect_db.php");
 		$STH = $DBH->prepare("INSERT INTO comment (title,text,author,author_id,post_id,lang) values (?,?,?,?,?,?)");

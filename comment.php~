@@ -1,15 +1,14 @@
 <?php
 //
 //  
-include('form_add_com.php');
-if (empty($_GET['page_com']))	{	
-		$page_com = 1;	
-	}else{
-		$page_com = $_GET['page_com'];	
-	}
+	include('form_add_com.php');
+	if (empty($_GET['page_com'])){	
+			$page_com = 1;	
+		}else{
+			$page_com = $_GET['page_com'];	
+		}
 	include('connect_db.php');
 	$sql = "SELECT COUNT(*) FROM comment WHERE post_id =:id AND lang= :lang";
-	
 	$result = $DBH->prepare($sql); 
 	$result->bindValue(':id',$id);
 	$result->bindValue(':lang',$lang);
@@ -19,15 +18,12 @@ if (empty($_GET['page_com']))	{
 	$posts = $m;
 	$total = (int)(($posts - 1) / 10) + 1; 	
 	$page_com = (int)($page_com);
-	if(empty($page_com) or $page_com < 0) 	
-	{	
+	if(empty($page_com) or $page_com < 0){	
 		$page_com = 1;
 	}	
-	if($page_com > $total)	
-	{	
+	if($page_com > $total){	
 		$page_com = $total; 	
 	}
-	
 	$max = $page_com*10;	
 	$min = $page_com*10 - 10;
 	if ($min < 0){
@@ -45,9 +41,12 @@ if (empty($_GET['page_com']))	{
 		echo $row['text'];
 		echo '</div><div class="post">';
 		$link_profil="profil.php?id=".$row['author_id'];
-		echo"<p>author:<a href=".$link_profil.">".$row['author']."</a>data: ".$row['date']."<p></div>"; 
-	}
-	
+		echo"<p>author:<a href=".$link_profil.">".$row['author']."</a>data: ".$row['date']."<p>";
+		if(in_array('admin',$_SESSION['roles'])){
+			//echo"<p> <a href=delete_comment.php?id=".$row['id'].">".t($lang,'delete')."</a>";			
+		}
+		echo "</div>";
+	}	
 	$previous_page = $page_com-1;
 	$next_page = $page_com+1;
 	

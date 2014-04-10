@@ -41,7 +41,11 @@
 		echo $row['text'];
 		echo '</div><div class="post">';
 		$link_profil="profil.php?id=".$row['author_id'];
-		echo"<p>author:<a href=".$link_profil.">".$row['author']."</a>data: ".$row['date']."<p></div>"; 
+		echo"<p>author:<a href=".$link_profil.">".$row['author']."</a>data: ".$row['date']."<p>";
+		if(in_array('admin',$_SESSION['roles'])){
+			echo"<p> <a href=delete_comment.php?id=".$row['id'].">".t($lang,'delete')."</a>";			
+		}
+		echo "</div>";
 	}	
 	$previous_page = $page_com-1;
 	$next_page = $page_com+1;
