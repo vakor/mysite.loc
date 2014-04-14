@@ -32,14 +32,13 @@
 			array_push($error_change,'not entered login');
 			$error = 1;
 		} else{
-			$STH = $DBH->query("SELECT * from user WHERE login=".$login);
-			//if(!empty($STH)){
-				$STH->setFetchMode(PDO::FETCH_ASSOC);
-				$row = $STH->fetch();
-				if(!empty($row) && !($row['login'] == $_SESSION['login'])){
-					array_push($error_change,'user with that login exist');
-					$error = 1;
-			//}
+			$STH = $DBH->prepare("SELECT * FROM user WHERE login=".$login);
+			$STH->execute();
+			$STH->setFetchMode(PDO::FETCH_ASSOC);
+			$row = $STH->fetch();
+			if(!empty($row) && !($row['login'] == $_SESSION['login'])){
+				array_push($error_change,'user with that login exist');
+				$error = 1;
 			}
 		}
 		

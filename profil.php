@@ -3,7 +3,6 @@
 	include("connect_db.php");
 	include("translate.php");
 	include("set_lang.php");
-	
 	if( empty($_GET['id'])){
 		$id=1;
 	}else{
@@ -11,7 +10,7 @@
 	}
 	include("header.html");
 	include("leftside.html");
-	echo'	<div class="center">';
+	echo'	<p><div class="center">';
 	$strSQL = "SELECT * from user WHERE id=".$id;		
 	$STH = $DBH->query($strSQL);
 	$STH->setFetchMode(PDO::FETCH_ASSOC);
@@ -38,7 +37,7 @@
 	}
 	echo "</div> ";
 	include('rightside.php');
-	echo "</div></body></html>";	
+	echo "</body></html>";	
 	
  
 

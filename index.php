@@ -2,7 +2,7 @@
 
 	session_start();
 	include('set_lang.php');
-	echo $lang;
+	//echo $lang;
 	include("connect_db.php");
 	include("translate.php");
 	if (isset($_POST['create_news'])){

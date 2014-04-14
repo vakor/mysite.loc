@@ -16,8 +16,8 @@
 			$_SESSION['ent'] = 2;   
 			$_SESSION['login'] =$login;
 			$_SESSION['profil_id']=$row['id'];
-			$STH = $DBH->prepare("UPDATE user SET date_log= :date_log  WHERE id=".$row['id']);  
-			$STH->bindParam(':date_log', time());
+			$STH = $DBH->prepare("UPDATE user SET date_log= CURRENT_TIMESTAMP  WHERE id=".$row['id']);  
+			//$STH->bindParam(':date_log', time());
 			$STH->execute();
 			$_SESSION['roles'] = array();	
 			$_SESSION['roles']= unserialize($row['roles']);

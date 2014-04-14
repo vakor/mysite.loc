@@ -11,7 +11,7 @@
 .leftside {
 	background-color: RGB(153, 149, 140);
 	float: left;
-	height:650;
+	height:650 px;
 	width:16%;
 
 }
@@ -64,7 +64,7 @@
 	margin-bottom:15px;
 }
 
-a.button{
+.button{
 	background-color: RGB(255, 253, 223);
  	text-decoration: none;
 	padding: 4px; 
@@ -78,8 +78,3 @@ a.button{
 	text-align: center;
 	background-color: RGB(124, 93, 251);
 }
-
-
-
-
-

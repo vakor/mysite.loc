@@ -48,12 +48,13 @@
 		}
 	}
 	if ($error == 2 ){
-		$date_reg=time();		
+		$date_reg= date();
+		//echo $date_reg;exit();		
 		$roles = array();
 		$user='user';
 		array_push($roles,$user);
-		$data = array($login,$password	,$email,$date_reg,"empty.jpg",serialize($roles));
-		$STH = $DBH->prepare("INSERT INTO user (login,password,email,date_reg,photo,roles) values (	?, ?,?,?,?,?)");  
+		$data = array($login, $password, $email, "empty.jpg", serialize($roles));
+		$STH = $DBH->prepare("INSERT INTO user (login, password, email, photo, roles) values (?, ?, ?, ?, ?)");  
 		$STH->execute($data);
 		$_SESSION['ent'] = 2;   
 		$_SESSION['login'] = $login;
@@ -63,6 +64,8 @@
 		while($row = $STH->fetch(PDO::FETCH_ASSOC)){
 			$_SESSION['profil_id']=$row['id'];
 		}	
+		$STH = $DBH->prepare("UPDATE  user SET date_reg = CURRENT_TIMESTAMP WHERE id =". $_SESSION['profil_id']);  
+		$STH->execute();
 		Header("Location: index.php");			
 		}else{
 			$_SESSION['erreg'] = $error_reg;

@@ -16,7 +16,7 @@ session_start();
 			$STH->execute();
 			Header("Location:  index.php"); 
 			echo "you  delete this profil<p><a href='index.php'>HOME</a>";
-			$_SESSION['ent'] = 2;
+			$_SESSION['ent'] = 3;
 		}
 		}
 	}else{

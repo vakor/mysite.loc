@@ -3,10 +3,11 @@
 <h1>111</h1>
 <body>
 <?php
-$z = 'ab';
- echo md5($z); echo"<br>";
-
-echo sha1($z);echo"<br>";
+echo "string";
+include("connect_db.php");
+$STH = $DBH->prepare("UPDATE  user SET date_reg = CURRENT_TIMESTAMP");  
+		//$STH->bindParam(':name', 'lol');
+		$STH->execute();
 
 ?>
 </body>
