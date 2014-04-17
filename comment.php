@@ -1,7 +1,9 @@
 <?php
 //
 //  
-	include('form_add_com.php');
+	if(!empty($_SESSION['roles'])){
+		include('form_add_com.php');
+	}
 	if (empty($_GET['page_com'])){	
 			$page_com = 1;	
 		}else{
@@ -41,10 +43,12 @@
 		echo $row['text'];
 		echo '</div><div class="post">';
 		$link_profil="profil.php?id=".$row['author_id'];
-		echo"<p>author:<a href=".$link_profil.">".$row['author']."</a>data: ".$row['date']."<p>";
-		if(in_array('admin',$_SESSION['roles'])){
-			echo"<p> <a href=delete_comment.php?id=".$row['id'].">".t($lang,'delete')."</a>";			
-		}
+		echo"<p>".t($lang,'author').":<a href=".$link_profil.">".$row['author']."</a>".t($lang,'date').": ".$row['date']."<p>";
+		if(!empty($_SESSION['roles'])){
+			if(in_array('admin',$_SESSION['roles'])){
+				echo"<p> <a href=delete_comment.php?id=".$row['id'].">".t($lang,'delete')."</a>";			
+			}
+	}	
 		echo "</div>";
 	}	
 	$previous_page = $page_com-1;

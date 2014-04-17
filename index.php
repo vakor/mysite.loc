@@ -53,13 +53,15 @@
 		echo"<a href=".$s.">".t($lang,'read_more')."</a>";	
 		echo '</div><div class="author">';
 		$link_profil="profil.php?id=".$row['author_id'];
-		echo"<p>author:<a href=".$link_profil.">".$row['author']."</a>data: ".$row['data']."<p></div>"; 
+		echo"<p>".t($lang,'author')." :<a href=".$link_profil.">".$row['author']."</a> ".t($lang,'date').": ".$row['data']."<p></div>"; 
 	}
 	
 	$previous_page = $page-1;
 	$next_page = $page+1;
-	echo "<div class='navigate'> <a href=index.php?page=".$previous_page.">back  </a>	
-	<a href=index.php?page=".$next_page.">next </a></div></div>	";	
+	if($m>10){
+		echo "<div class='navigate'> <a href=index.php?page=".$previous_page.">".t($lang,'back')."  </a> <a href=index.php?page=".$next_page.">".t($lang,"next")." </a></div>	";	
+	}
+	echo "</div>";
 	include('rightside.php');
 	echo "</body></html>";
 	

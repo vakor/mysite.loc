@@ -35,8 +35,12 @@ $voc = array (
 		"user" => "User",
 		"admin" => "Admin",
 		"moder" => "Moder",
-		"locked" => "Locked"
-	),
+		"locked" => "Locked",
+		"back" => "Back",
+		"next" => "Next",
+		"enter" => "Enter",
+		"registration" => "Registration",
+ 	),
 	"ukr" => array(
 		"surname" => "Призвіще",
 		"login" => "Логін",
@@ -71,7 +75,11 @@ $voc = array (
 		"user" => "Користувач",
 		"admin" => "Адміністратор",
 		"moder" => "Модератор",
-		"locked" => "Заблокований"
+		"locked" => "Заблокований",
+		"back" => "Назад",
+		"next" => "Вперід",	
+		"enter" => "Війти",
+		"registration" => "Реэстрація",
 	),
 );
 

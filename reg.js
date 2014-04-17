@@ -49,13 +49,17 @@ $(document).ready(function(){
       error = 2;
       errors.push('password and Repassword');
     }
-    var  regexp =  /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-    
-    var pos = email.search(regexp);
-    if (email.length <1 || pos < 0) {
+    //var  regexp = "/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/";
+    var r = /^\w+@\w+\.\w{2,4}$/i;
+    //if (!r.test(email) 
+    //var  regexp = "/^[a-zA-Z0-9_\-.]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-.]+$/";
+    //var pos = email.search(regexp);
+  
+    if (email.length <1 || !r.test(email)) {
       errors.push('wrong email');
-      error = 2;
+      error = 2; 
     }else{
+      //alert("sad");
       $.ajax({
       type: 'POST',
       async: false,
@@ -70,6 +74,7 @@ $(document).ready(function(){
       }
     });
     }
+    //alert(error);
     if (error == 1) {
      $.ajax({
       type: 'POST',

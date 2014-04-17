@@ -1,4 +1,8 @@
 <?php
+$bu = array(1 => 'qqq', 2 => 'www', 3 => 0, 4 => 0);
+// ($bu);
+
+exit(print_r(array_filter($bu), TRUE));
 	session_start();
 	$login = $_POST['login'];
 	$password = $_POST['password'];
